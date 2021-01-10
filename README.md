@@ -1,24 +1,68 @@
-# README
+# テーブル設計
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Userテーブル
+| Column             | Type    | Options                   |
+| ------------------ | ------- | ------------------------- |
+| nickname           | string  | null: false               |
+| job_id             | integer | null: false               |
+| email              | string  | null: false, unique: true |
+| encrypted_password | string  | null: false               |
+| drink_coffee_id    | integer |                           |
+| favorite_shop      | string  |                           |
 
-Things you may want to cover:
+- has_many favorites
+- has_many reviews
+- has_many articles
 
-* Ruby version
+## Articlesテーブル
+| Column   | type       | Options           |
+| -------- | ---------- | ----------------- |
+| title    | string     | null: false       |
+| detail   | string     | null: false       |
+| how_brew | text       | null: false       |
+| why_brew | text       | null: false       |
+| commit   | string     |                   |
+| taste    | string     | null: false       |
+| user_id  | references | foreign_key: true |
 
-* System dependencies
+- has_many favorites
+- has_many reviews
+- has_many article_tag_relations
+- has_many tags, through article_tag_relations
+- belongs_to user
 
-* Configuration
+## Favorites
+| Column     | Type       | Options           |
+| ---------- | ---------- | ----------------- |
+| article_id | references | foreign_key: true |
+| user_id    | references | foreign_key: true |
 
-* Database creation
+- belongs_to user
+- belongs_to article
 
-* Database initialization
+## Reviews
+| Column     | Type       | Options           |
+| ---------- | ---------- | ----------------- |
+| review     | string     | null: false       |
+| article_id | references | foreign_key: true |
+| user_id    | references | foreign_key: true |
 
-* How to run the test suite
+- belongs_to user
+- belongs_to article
 
-* Services (job queues, cache servers, search engines, etc.)
+## Tags
+| Column | Type   | Options                       |
+| ------ | ------ | ----------------------------- |
+| name   | string | null: false, uniqueness: true |
 
-* Deployment instructions
+- has_many article_tag_relations 
+- has_many articles, through article_tag_relations
 
-* ...
+## Article_tag_relations
+| Column     | Type       | Options           |
+| ---------- | ---------- | ----------------- |
+| tag_id     | references | foreign_key: true |
+| article_id | references | foreign_key: true |
+
+- belongs_to tag
+- belongs_to article

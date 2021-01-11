@@ -15,7 +15,7 @@
 - has_many articles
 
 ## Articlesテーブル
-| Column   | type       | Options           |
+| Column   | Type       | Options           |
 | -------- | ---------- | ----------------- |
 | title    | string     | null: false       |
 | detail   | string     | null: false       |

@@ -1,6 +1,6 @@
 # テーブル設計
 
-## Userテーブル
+## Usersテーブル
 | Column             | Type    | Options                   |
 | ------------------ | ------- | ------------------------- |
 | nickname           | string  | null: false               |
@@ -31,7 +31,7 @@
 - has_many tags, through article_tag_relations
 - belongs_to user
 
-## Favorites
+## Favoritesテーブル
 | Column     | Type       | Options           |
 | ---------- | ---------- | ----------------- |
 | article_id | references | foreign_key: true |
@@ -40,7 +40,7 @@
 - belongs_to user
 - belongs_to article
 
-## Reviews
+## Reviewsテーブル
 | Column     | Type       | Options           |
 | ---------- | ---------- | ----------------- |
 | review     | string     | null: false       |
@@ -50,7 +50,7 @@
 - belongs_to user
 - belongs_to article
 
-## Tags
+## Tagsテーブル
 | Column | Type   | Options                       |
 | ------ | ------ | ----------------------------- |
 | name   | string | null: false, uniqueness: true |
@@ -58,7 +58,7 @@
 - has_many article_tag_relations 
 - has_many articles, through article_tag_relations
 
-## Article_tag_relations
+## Article_tag_relationsテーブル
 | Column     | Type       | Options           |
 | ---------- | ---------- | ----------------- |
 | tag_id     | references | foreign_key: true |

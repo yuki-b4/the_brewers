@@ -4,14 +4,14 @@ class ArticlesController < ApplicationController
   end
 
   def new
-    @article = Article.new
+    @article = ArticleTag.new
   end
 
   def create
-    @article = Article.new(article_params)
+    @article = ArticleTag.new(article_params)
     if @article.valid?
       @article.save
-      redirect_to root_path
+      return redirect_to root_path   #！！！詳細ページが完成し次第、投稿した記事に飛べるように変更！！！
     else
       render :new
     end
@@ -19,6 +19,6 @@ class ArticlesController < ApplicationController
 
   private
   def article_params
-    params.require(:article).permit(:title, :detail, :how_brew, :why_brew, :commit, :taste, :image).merge(user_id: current_user.id)
+    params.require(:article_tag).permit(:title, :detail, :how_brew, :why_brew, :commit, :taste, :image, :name).merge(user_id: current_user.id)
   end
 end

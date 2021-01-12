@@ -4,6 +4,8 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
+  has_many :articles
+
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to :drink_coffee
   belongs_to :job

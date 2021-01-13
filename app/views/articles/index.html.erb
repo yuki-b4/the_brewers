@@ -10,9 +10,11 @@
           <% end %>
           <div class="card__body">
             <%= link_to article.title, "#", class: :card__title%>         <%# 投稿詳細ページに %>
-            <p class="card__summary">
-              <%= article.detail %>
-            </p>
+            <% article.tags.each do |tag|%>
+              <p class="card__summary">
+                <%= tag.name %>
+              </p>
+            <% end %>
             <%= link_to "by #{article.user.nickname}", "#", class: :card__user %>    <%# ユーザー詳細ページに %>
           </div>
       </div>

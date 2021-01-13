@@ -1,5 +1,7 @@
 <%= form_with model: @article, url: articles_path, local: true do |f|%>
 
+   <%= render "devise/shared/error_messages", model: @article%>
+
    <div class="field">
     <%= f.label :title, "レシピのタイトル（必須）" %><br />
     <%= f.text_area :title%>

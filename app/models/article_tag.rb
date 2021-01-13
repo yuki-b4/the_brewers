@@ -9,6 +9,8 @@ class ArticleTag
     validates :how_brew
     validates :why_brew
     validates :taste
+    validates :name
+    validates :user_id
   end
 
   def save

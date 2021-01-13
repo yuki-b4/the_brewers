@@ -1,23 +1,26 @@
-<h2>ログイン</h2>
+<%= render "devise/shared/global_header"%>
+<div class="devise">
+  <h2 class="devise_title">ログイン</h2>
 
-<%= form_with model: @user, url: user_session_path, local: true do |f| %>
+  <%= form_with model: @user, url: user_session_path, class: :devise_form, local: true do |f| %>
 
-  <div class='login-flash-message'>
-    <%= flash[:notice] %>
-    <%= flash[:alert] %>
-  </div>
+    <div class='login-flash-message'>
+      <%= flash[:notice] %>
+      <%= flash[:alert] %>
+    </div>
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
+    <div class="field">
+      <%= f.label :email %><br />
+      <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+    </div>
 
-  <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "current-password" %>
-  </div>
+    <div class="field">
+      <%= f.label :password %><br />
+      <%= f.password_field :password, autocomplete: "current-password" %>
+    </div>
 
-  <div class="actions">
-    <%= f.submit "ログイン" %>
-  </div>
-<% end %>
+    <div class="actions">
+      <%= f.submit "ログイン" %>
+    </div>
+  <% end %>
+</div>

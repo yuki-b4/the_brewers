@@ -61,7 +61,7 @@ gem "devise"
 
 gem "pry-rails"
 
-gem 'bootstrap', '~> 4.5.0'
+gem 'bootstrap', '~> 5.0.0.beta1'
 
 gem 'jquery-rails'
 

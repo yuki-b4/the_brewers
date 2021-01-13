@@ -1,0 +1,17 @@
+<header class="second_header">
+  <div class="nav">
+    <div class="nav_left">
+      <%= link_to "The Brewers", root_path, class: :nav_logo %>
+    </div>
+    <div class="nav_center">
+      <%= form_with(url: "#", local: true, method: :get, class: "search_form") do |form|%>
+        <%= form.text_field :keyword, placeholder: "投稿を検索してみよう", class: "search_input" %>
+        <%= form.submit "検索", class: "search_btn" %>
+      <% end %>
+    </div>
+    <div class="nav_right"> 
+      <%= link_to "Myリスト", "#", class: :mylist%>
+      <%= link_to "投稿する", new_article_path, class: :new_post %>
+    </div>
+  <div>
+</header>

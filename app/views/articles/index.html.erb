@@ -1,18 +1,23 @@
-<div class="card__wrapper">
-  <% @articles.each do |article|%>
-    <div class="card">
-      <%# 必ずしも、記事投稿の際に画像を添付する必要はないので... %>
-        <% if article.image.attached? %>   
-          <%= link_to image_tag(article.image, class: :card__img ), "#", method: :get %>   <%# 投稿詳細ページに %>
-        <% end %>
-        <div class="card__body">
-          <%= link_to article.title, "#", class: :card__title%>         <%# 投稿詳細ページに %>
-          <p class="card__summary">
-            <%= article.detail %>
-          </p>
-          <%= link_to "by #{article.user.nickname}", "#", class: :card__user %>    <%# ユーザー詳細ページに %>
-        </div>
-    </div>
-  <% end %>
-</div>
+  <%= render "devise/shared/global_header"%>
+  <%= render "devise/shared/second_header"%>
+
+  <div class="card__wrapper">
+    <% @articles.each do |article|%>
+      <div class="card">
+        <%# 必ずしも、記事投稿の際に画像を添付する必要はないので... %>
+          <% if article.image.attached? %>   
+            <%= link_to image_tag(article.image, class: :card__img ), "#", method: :get %>   <%# 投稿詳細ページに %>
+          <% end %>
+          <div class="card__body">
+            <%= link_to article.title, "#", class: :card__title%>         <%# 投稿詳細ページに %>
+            <% article.tags.each do |tag|%>
+              <p class="card__summary">
+                <%= tag.name %>
+              </p>
+            <% end %>
+            <%= link_to "by #{article.user.nickname}", "#", class: :card__user %>    <%# ユーザー詳細ページに %>
+          </div>
+      </div>
+    <% end %>
+  </div>
 

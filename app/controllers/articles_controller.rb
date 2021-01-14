@@ -1,6 +1,6 @@
 class ArticlesController < ApplicationController
   before_action :authenticate_user!, only: :new
-  before_action :set_article, only: :show 
+  before_action :set_article, only: :show
 
   def index
     @articles = Article.order(created_at: :desc).includes(:user)

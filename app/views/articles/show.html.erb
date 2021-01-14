@@ -1,0 +1,92 @@
+<%= render "devise/shared/global_header"%>
+<%= render "devise/shared/second_header"%>
+
+<div class="article">
+  <%# ここから記事情報 %>
+  <div class="article_info">
+    <div class="upper_head">
+      <div class="upper_head_left">
+        <p class="title">
+          <%= @article.title%>
+        </p>
+        <p class="nickname">
+          by
+        </p>
+        <%= link_to @article.user.nickname, "#", class: :nickname_ho%>
+      </div>
+      <% if user_signed_in? && current_user.id == @article.user.id%>
+        <div class="upper_head_right">
+          <%= link_to "編集", "#", class: :edit_button%>
+          <%= link_to "削除", "#", class: :destroy_button%>
+        </div>
+      <% end %>
+    </div>
+    <% if @article.image.attached?%>
+      <div class="middle_head">
+        <%= image_tag(@article.image, class: :image)%>
+      </div>
+    <% end %>
+    <div class="lower_head">
+      <p class="details">
+        ○コーヒーの詳細
+      </p>
+      <%= @article.detail%>
+    </div>
+    <div class="upper_body">
+      <p class="reciepe">○レシピの詳細</p>
+      <div class="reciepe_box">
+        <div class="how_brew">
+          <p class="details">
+            どうやって作ったか
+          </p>
+          <%= @article.how_brew%>
+        </div>
+        <div class="why_brew">
+          <p class="details">
+            なぜそうしたか
+          </p>
+          <%= @article.why_brew%>
+        </div>
+      </div>
+    </div>
+    <div class="middle_body">
+      <p class="details">
+          ○お味は？
+      </p>
+      <%= @article.taste%>
+    </div>
+    <div class="lower_body">
+       <p class="details">
+          ○こだわりポイント
+      </p>
+      <%= @article.commit%>
+    </div>
+    <div class="lower__body">
+       <p class="details">
+          ○タグ
+      </p>
+      <% @article.tags.each do |tag|%>
+        <%= tag.name%>
+      <% end %>
+    </div>
+    <div class="foot">
+      <%# ！！！！！！ここには、真似してみたい機能（favorite）を実装します！！！！！ %>
+    </div>
+  </div>      
+  <%# //ここまで、記事情報 %>
+  <%# ここからコメント情報 %>
+  <div class="comment_info">
+    <p class="details">レビュー欄</p>
+    <% if user_signed_in?%>
+      <%= form_with class: :comment_input do |f|%>
+        <%= f.label "#", "コメント"%>
+        <%= f.text_field "#", class: :input_form%>
+      <% end %>
+    <% end %>
+    <div class="comment_index">
+    ここにはコメントが入ります
+      <%# ！！！！！ここには、コメントの一覧が入ります！！！！！！ %>
+    </div>
+  </div>
+  <%# //ここまでコメント情報 %>
+</div>

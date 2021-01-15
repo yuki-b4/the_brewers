@@ -1,7 +1,9 @@
   <%= render "devise/shared/global_header"%>
   <%= render "devise/shared/second_header"%>
   <%= render "devise/shared/done_flash_message"%>
-
+  <% if @results.blank? %>
+    <p>Sorry...<br />検索結果に当てはまる記事は見つかりませんでした</p>
+  <% end %>
   <div class="card__wrapper">
     <% @results.each do |article|%>
       <div class="card">

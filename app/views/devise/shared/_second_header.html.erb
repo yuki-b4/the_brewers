@@ -5,10 +5,10 @@
     </div>
     <div class="nav_center">
       <%= search_form_for @q, url: search_articles_path, class: "search_form" do |f|%>
-        <%= f.search_field :tags_name_or_title_or_detail_cont, placeholder: "投稿を検索してみよう！", class: "search_input" %>
+        <%= f.search_field :tags_name_or_title_cont, placeholder: "投稿を検索してみよう！", class: "search_input" %>
         <%= f.submit "検索", class: "search_btn" %>
       <% end %>
-      <p class="search_hint">タイトル・タグ・コーヒーの詳細を入力してね</p>
+      <p class="search_hint">検索したいタイトル・タグを入力してね</p>
     </div>
     <div class="nav_right"> 
       <%= link_to "Myリスト", "#", class: :mylist%>

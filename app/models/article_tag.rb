@@ -12,12 +12,48 @@ class ArticleTag
     validates :user_id
   end
 
-  def save
-    article = Article.create(title: title, detail: detail, how_brew: how_brew, why_brew: why_brew, commit: commit, taste: taste,
-                             image: image, user_id: user_id)
-    tag = Tag.where(name: name).first_or_initialize
-    tag.save
+  delegate :persisted?, to: :article
 
-    ArticleTagRelation.create(article_id: article.id, tag_id: tag.id)
+  def initialize(attributes = nil, article: Article.new)
+    @article = article
+    attributes ||= default_attributes
+    super(attributes)
+  end
+
+  def save
+    return if invalid?
+
+    ActiveRecord::Base.transaction do
+      tags = split_tag_names.map { |name| Tag.find_or_create_by!(name: name) }
+      article.update(title: title, detail: detail, how_brew: how_brew, why_brew: why_brew, commit: commit, taste: taste,
+                     image: image, tags: tags, user_id: user_id)
+    end
+  rescue ActiveRecord::RecordInvalid
+    false
+  end
+
+  def to_model
+    article
+  end
+
+  private
+
+  attr_reader :article
+
+  def default_attributes
+    {
+      title: article.title,
+      detail: article.detail,
+      how_brew: article.how_brew,
+      why_brew: article.why_brew,
+      commit: article.commit,
+      taste: article.taste,
+      image: article.image,
+      name: article.tags.pluck(:name).join(',')
+    }
+  end
+
+  def split_tag_names
+    name.split(',')
   end
 end

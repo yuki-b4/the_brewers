@@ -1,5 +1,6 @@
 <%= render "devise/shared/global_header"%>
 <%= render "devise/shared/second_header"%>
+<%= render "devise/shared/done_flash_message"%>
 
 <div class="article">
   <%# ここから記事情報 %>
@@ -16,7 +17,7 @@
       </div>
       <% if user_signed_in? && current_user.id == @article.user.id%>
         <div class="upper_head_right">
-          <%= link_to "編集", "#", class: :edit_button%>
+          <%= link_to "編集", edit_article_path(@article), class: :edit_button%>
           <%= link_to "削除", "#", class: :destroy_button%>
         </div>
       <% end %>

@@ -1,8 +1,9 @@
-<%= render "devise/shared/global_header"%>
+<%= render "devise/shared/global_header"%> 
+
 <div class="post">
    <%= form_with model: @form, local: true do |f|%>
 
-      <%= render "devise/shared/error_messages", model: @form%>
+      <%= render "devise/shared/error_messages", model: @form %>
 
       <div class="field">
       <%= f.label :title, "レシピのタイトル（必須）" %><br />
@@ -45,7 +46,7 @@
       </div>
 
       <div class="action">
-      <%= f.submit "投稿する", class: :form__btn %>
+      <%= f.submit "更新する", class: :form__btn %>
       </div>
 
    <% end %>

@@ -15,7 +15,7 @@ class ArticlesController < ApplicationController
     @form = ArticleTag.new(article_params)
     if @form.valid?
       @form.save
-      redirect_to root_path, notice: '投稿が完了しました！'   
+      redirect_to root_path, notice: '投稿が完了しました！'
     else
       render :new
     end
@@ -42,7 +42,7 @@ class ArticlesController < ApplicationController
 
   def article_params
     params.require(:article).permit(:title, :detail, :how_brew, :why_brew, :commit, :taste, :image,
-                                        :name).merge(user_id: current_user.id)
+                                    :name).merge(user_id: current_user.id)
   end
 
   def set_article
@@ -50,8 +50,6 @@ class ArticlesController < ApplicationController
   end
 
   def move_to_index
-    unless user_signed_in? && current_user.id == @article.user.id
-      redirect_to root_path
-    end
+    redirect_to root_path unless user_signed_in? && current_user.id == @article.user.id
   end
 end

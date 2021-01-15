@@ -18,7 +18,7 @@
       <% if user_signed_in? && current_user.id == @article.user.id%>
         <div class="upper_head_right">
           <%= link_to "編集", edit_article_path(@article), class: :edit_button%>
-          <%= link_to "削除", "#", class: :destroy_button%>
+          <%= link_to "削除", article_path(@article), method: :delete, class: :destroy_button, data: {confirm: "削除しますか？"} %>
         </div>
       <% end %>
     </div>

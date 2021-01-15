@@ -1,7 +1,7 @@
 class ArticlesController < ApplicationController
   before_action :authenticate_user!, only: [:new, :edit]
-  before_action :set_article, only: [:edit, :update, :show]
-  before_action :move_to_index, only: [:edit]
+  before_action :set_article, only: [:edit, :update, :destroy, :show]
+  before_action :move_to_index, only: [:edit, :destroy]
 
   def index
     @articles = Article.order(created_at: :desc).includes(:user)
@@ -33,6 +33,10 @@ class ArticlesController < ApplicationController
     else
       render :edit
     end
+  end
+
+  def destroy
+    redirect_to root_path, notice: '削除が完了しました。' if @article.destroy
   end
 
   def show

@@ -36,13 +36,10 @@ class ArticlesController < ApplicationController
   end
 
   def destroy
-    if @article.destroy
-      redirect_to root_path, notice: "削除が完了しました。"
-    end
+    redirect_to root_path, notice: '削除が完了しました。' if @article.destroy
   end
 
   def show
-    
   end
 
   private

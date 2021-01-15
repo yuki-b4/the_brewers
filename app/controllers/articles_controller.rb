@@ -44,7 +44,7 @@ class ArticlesController < ApplicationController
   end
 
   def search
-    @results = @q.result
+    @results = @q.result.order(created_at: :desc)
   end
 
   private

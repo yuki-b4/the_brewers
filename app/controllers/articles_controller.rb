@@ -2,6 +2,7 @@ class ArticlesController < ApplicationController
   before_action :authenticate_user!, only: [:new, :edit]
   before_action :set_article, only: [:edit, :update, :destroy, :show]
   before_action :move_to_index, only: [:edit, :destroy]
+  before_action :set_q, only: [:index, :search]
 
   def index
     @articles = Article.order(created_at: :desc).includes(:user)
@@ -42,6 +43,10 @@ class ArticlesController < ApplicationController
   def show
   end
 
+  def search
+    @results = @q.result
+  end
+
   private
 
   def article_params
@@ -55,5 +60,9 @@ class ArticlesController < ApplicationController
 
   def move_to_index
     redirect_to root_path unless user_signed_in? && current_user.id == @article.user.id
+  end
+
+  def set_q
+    @q = Article.ransack(params[:q])
   end
 end

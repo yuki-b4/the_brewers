@@ -1,5 +1,18 @@
 <%= render "devise/shared/global_header"%>
-<%= render "devise/shared/second_header"%>
+<%# <%= render "devise/shared/second_header"%> 
+<header class="second_header">
+  <div class="nav">
+    <div class="nav_left">
+      <%= link_to "The Brewers", root_path, class: :nav_logo %>
+    </div>
+    <div class="nav_center">
+    </div>
+    <div class="nav_right"> 
+      <%= link_to "Myリスト", "#", class: :mylist%>
+      <%= link_to "投稿する", new_article_path, class: :new_post %>
+    </div>
+  <div>
+</header>
 <%= render "devise/shared/done_flash_message"%>
 
 <div class="article">

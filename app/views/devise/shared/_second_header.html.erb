@@ -4,10 +4,11 @@
       <%= link_to "The Brewers", root_path, class: :nav_logo %>
     </div>
     <div class="nav_center">
-      <%= form_with(url: "#", local: true, method: :get, class: "search_form") do |form|%>
-        <%= form.text_field :keyword, placeholder: "投稿を検索してみよう", class: "search_input" %>
-        <%= form.submit "検索", class: "search_btn" %>
+      <%= search_form_for @q, url: search_articles_path, class: "search_form" do |f|%>
+        <%= f.search_field :tags_name_or_title_cont, placeholder: "投稿を検索してみよう！", class: "search_input" %>
+        <%= f.submit "検索", class: "search_btn" %>
       <% end %>
+      <p class="search_hint">検索したいタイトル・タグを入力してね</p>
     </div>
     <div class="nav_right"> 
       <%= link_to "Myリスト", "#", class: :mylist%>

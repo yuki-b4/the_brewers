@@ -9,10 +9,10 @@
       <div class="card">
         <%# 必ずしも、記事投稿の際に画像を添付する必要はないので... %>
           <% if article.image.attached? %>   
-            <%= link_to image_tag(article.image, class: :card__img ), article, method: :get %>   <%# 投稿詳細ページに %>
+            <%= link_to image_tag(article.image, class: :card__img ), article_path(article), method: :get %>   <%# 投稿詳細ページに %>
           <% end %>
           <div class="card__body">
-            <%= link_to article.title, article, class: :card__title%>         <%# 投稿詳細ページに %>
+            <%= link_to article.title, article_path(article), class: :card__title%>         <%# 投稿詳細ページに %>
             <% article.tags.each do |tag|%>
               <p class="card__summary">
                 <%= tag.name %>

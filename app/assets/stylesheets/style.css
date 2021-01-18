@@ -310,6 +310,11 @@ a {
 }
 
 
+.delete_fav, .save_fav {
+  border: 1px solid #181818;
+  margin: 30px 0 10px 0;
+}
+
 
 
 

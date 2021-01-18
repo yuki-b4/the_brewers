@@ -1,8 +1,8 @@
 <% if user_signed_in? %>
   <% if article.liked_by?(current_user) %>
-    <p><span>お気に入り解除:</span><%= link_to article.favorites.count, article_favorites_path(article.id), method: :delete, remote: true%></p>
+    <p><%= link_to "マネしたいリストから削除", article_favorites_path(article.id), method: :delete, remote: true, class: :delete_fav%></p>
   <% else %>
-    <p><span>お気に入り登録:</span><%= link_to article.favorites.count, article_favorites_path(article.id), method: :post, remote: true%></p>
+    <p><%= link_to "マネしたい！", article_favorites_path(article.id), method: :post, remote: true,  class: :save_fav%></p>
   <% end %>
 <% end %>
-<p><span>お気に入り数:</span><%= link_to article.favorites.count%></p>
+<p><span>今</span><%= link_to article.favorites.count%><span>人の人がマネしたいと言っています！</span></p>

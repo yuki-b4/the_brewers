@@ -84,7 +84,9 @@
       <% end %>
     </div>
     <div class="foot">
-      <%# ！！！！！！ここには、真似してみたい機能（favorite）を実装します！！！！！ %>
+      <div id="likes_buttons_<%= @article.id %>">
+        <%= render partial: "favorites/favorite", locals: {article: @article}%>
+      </div>
     </div>
   </div>      
   <%# //ここまで、記事情報 %>

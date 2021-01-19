@@ -101,8 +101,12 @@
       <% end %>
     <% end %>
     <div class="comment_index">
-    ここにはコメントが入ります
-      <%# ！！！！！ここには、コメントの一覧が入ります！！！！！！ %>
+      <% @reviews.each do |review|%>
+        <p>
+          <%= link_to review.user.nickname, "#"%><br />
+          <%= review.review %>
+        </p>
+      <% end %>
     </div>
   </div>
   <%# //ここまでコメント情報 %>

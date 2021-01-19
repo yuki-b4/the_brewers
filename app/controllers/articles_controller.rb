@@ -42,6 +42,7 @@ class ArticlesController < ApplicationController
 
   def show
     @review = Review.new
+    @reviews = @article.reviews.includes(:user).order(created_at: :desc)
   end
 
   def search

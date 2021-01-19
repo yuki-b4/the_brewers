@@ -7,6 +7,7 @@ class User < ApplicationRecord
   has_many :articles
   has_many :favorites, dependent: :destroy
   has_many :favorite_articles, through: :favorites, source: :article
+  has_many :reviews, dependent: :destroy
 
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to :drink_coffee

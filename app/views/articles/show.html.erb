@@ -94,9 +94,10 @@
   <div class="comment_info">
     <p class="details">レビュー欄</p>
     <% if user_signed_in?%>
-      <%= form_with class: :comment_input do |f|%>
-        <%= f.label "#", "コメント"%>
-        <%= f.text_field "#", class: :input_form%>
+      <%= form_with model: [@article, @review], class: :comment_input do |f|%>
+        <%= f.label :review, "Brewレポ"%>
+        <%= f.text_field :review, class: :input_form%>
+        <%= f.submit "レビューを投稿する"%>
       <% end %>
     <% end %>
     <div class="comment_index">

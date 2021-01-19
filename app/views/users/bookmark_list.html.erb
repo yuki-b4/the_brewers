@@ -1,0 +1,25 @@
+<%= render "devise/shared/global_header"%>
+<%= render "devise/shared/done_flash_message"%>
+
+<div class="card__wrapper">
+  <% if @favorite_articles.blank? %>
+    <p>マネしたいリストに投稿してみよう！</p>
+  <% else %>
+  <% @favorite_articles.each do |article|%>
+    <div class="card">
+        <% if article.image.attached? %>   
+          <%= link_to image_tag(article.image, class: :card__img ), article_path(article), method: :get %>   <%# 投稿詳細ページに %>
+        <% end %>
+        <div class="card__body">
+          <%= link_to article.title, article_path(article), class: :card__title%>         <%# 投稿詳細ページに %>
+          <% article.tags.each do |tag|%>
+            <p class="card__summary">
+              <%= tag.name %>
+            </p>
+          <% end %>
+          <%= link_to "by #{article.user.nickname}", "#", class: :card__user %>    <%# ユーザー詳細ページに %>
+        </div>
+    </div>
+  <% end %>
+  <% end %>
+</div>

@@ -4,7 +4,6 @@
   <div class="card__wrapper">
     <% @favorite_articles.each do |article|%>
       <div class="card">
-        <%# 必ずしも、記事投稿の際に画像を添付する必要はないので... %>
           <% if article.image.attached? %>   
             <%= link_to image_tag(article.image, class: :card__img ), article_path(article), method: :get %>   <%# 投稿詳細ページに %>
           <% end %>

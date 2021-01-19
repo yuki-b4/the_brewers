@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   end
   resources :articles do
     resource :favorites, only: [:create, :destroy]
+    resources :reviews, only: [:create]
     collection do
       get "search"
     end

@@ -316,9 +316,27 @@ a {
 }
 
 
+/* ユーザー詳細 */
+.users {
+  margin: 0 0 5px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.edit__button {
+  height: 7vh;
+  padding: 20px 15px;
+  font-size: 12px;
+  background-color: #dfd3c3;
+  margin-right: 20px;
+  box-sizing: border-box;
+}
+
 
 
 /* フッター */
 footer {
   text-align: center;
 }
+

@@ -7,7 +7,7 @@
       <% if user_signed_in? %>
       <%# ログイン時 %>
         <div class="global_nav__right">
-          <%= link_to "ようこそ、#{current_user.nickname}さん",  "#", class: :global_nav__btn %>
+          <%= link_to "ようこそ、#{current_user.nickname}さん",  user_path(current_user.id), class: :global_nav__btn %>
           <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: :global_nav__logout %>
         </div>
       <%# // ログイン時 %>

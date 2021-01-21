@@ -33,7 +33,7 @@ class ArticlesController < ApplicationController
       if @article.published?
         redirect_to article_path(@article), notice: '投稿の更新が完了しました！'
       else
-        redirect_to root_path, notice: "記事を下書きに戻しました。"
+        redirect_to root_path, notice: '記事を下書きに戻しました。'
       end
     else
       render :edit

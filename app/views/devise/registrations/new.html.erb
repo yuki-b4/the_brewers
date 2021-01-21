@@ -11,7 +11,7 @@
       <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
     </div>
 
-    <div class="field">
+    <div class="check_box box">
       <%= f.label :job_id, "ご職業" %><br />
       <%= f.collection_select(:job_id, Job.all, :id, :name, {}) %>
     </div>
@@ -27,7 +27,7 @@
 
     <div class="field">
       <%= f.label :password_confirmation, "確認用パスワード" %><br />
-      <%= f.password_field :password_confirmation, autocomplete: "new-password", placeholder: "上記と同じパスワードを入力してください" %>
+      <%= f.password_field :password_confirmation, autocomplete: "new-password", placeholder: "もう一度入力してください" %>
     </div>
 
     <div class="field">
@@ -35,7 +35,7 @@
       <%= f.text_area :nickname, maxlength: "40", placeholder: "例) コーヒーマン"%>
     </div>
 
-    <div class="field">
+    <div class="check_box box extra_margin">
       <%= f.label :drink_coffee_id, "1日のコーヒー摂取量は？" %><br />
       <%= f.collection_select(:drink_coffee_id, DrinkCoffee.all, :id, :name, {}) %>
     </div>
@@ -49,5 +49,5 @@
       <%= f.submit "登録する" %>
     </div>
   <% end %>
+  <strong ><%= link_to "トップページにもどる", root_path, class: "btn root_link"%></strong>
 </div>
-

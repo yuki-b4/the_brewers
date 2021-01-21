@@ -2,22 +2,22 @@
 <%= render "devise/shared/second_half_header"%> 
 
 <div class="users">
+  <div class="user">
+    <h2 class="user_name"><%= "#{@user.nickname}のページ" %></h2>
+  </div>
   <div class="user_info">
-      <div class="user_name">
-        <%= "#{@user.nickname}のページ" %>
-      </div>
-      <p class="info_box">職業<br /></p>
-      <div class="user_job">
-        <%= @user.job.name%>
-      </div>
-      <p class="info_box">1日にコーヒーを飲む量<br /></p>
-      <div class="user_drink">
-        <%= "1日にコーヒーを#{@user.drink_coffee.name}飲みます"%>
-      </div>
-      <p class="info_box">お気に入りのお店<br /></p>
-      <div class="user_favorite_shop">
-        <%= "#{@user.favorite_shop}"%><br />
-      </div>
+    <p class="info_box">職業<br /></p>
+    <div class="user_detail">
+      <%= @user.job.name%>
+    </div>
+    <p class="info_box">1日にコーヒーを飲む量<br /></p>
+    <div class="user_detail">
+      <%= "1日にコーヒーを#{@user.drink_coffee.name}飲みます"%>
+    </div>
+    <p class="info_box">お気に入りのお店<br /></p>
+    <div class="user_detail">
+      <%= "#{@user.favorite_shop}"%><br />
+    </div>
   </div>
 </div>
 <%# ここまで、ユーザー詳細情報の表示 %>

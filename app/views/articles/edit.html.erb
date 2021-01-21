@@ -45,6 +45,8 @@
       <%= f.text_area :name%>
       </div>
 
+      <%= f.select :status, Article.statuses.keys.map{|k| [t("enums.articles.status.#{k}"), k]}, class:"check_box box"%> 
+
       <div class="action">
       <%= f.submit "更新する", class: :form__btn %>
       </div>

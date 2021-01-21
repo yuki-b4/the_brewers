@@ -21,12 +21,12 @@
       </div>
 
       <div class="field">
-      <%= f.label :how_brew, "淹れ方について教えてください（必須）" %><br />
+      <%= f.label :how_brew, "淹れ方の詳細(必須）" %><br />
       <%= f.text_area :how_brew%>
       </div>
 
       <div class="field">
-      <%= f.label :why_brew, "どうしてそう淹れようと思いましたか？（参考にした記事などあれば教えてください！）（必須）" %><br />
+      <%= f.label :why_brew, "なぜそうしたのか（参考にした記事など）" %><br />
       <%= f.text_area :why_brew %>
       </div>
 
@@ -45,9 +45,13 @@
       <%= f.text_area :name%>
       </div>
 
+      <%= f.select :status, Article.statuses.keys.map{|k| [t("enums.articles.status.#{k}"), k]}, class:"check_box box"%> 
+
       <div class="action">
       <%= f.submit "更新する", class: :form__btn %>
       </div>
 
    <% end %>
+
+   <strong ><%= link_to "トップページにもどる", root_path, class: "btn root_link"%></strong>
 </div>

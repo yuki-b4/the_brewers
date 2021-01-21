@@ -1,4 +1,7 @@
 class Article < ApplicationRecord
+
+  enum status: {draft: 0, published: 1}
+
   belongs_to :user
   has_one_attached :image
   has_many :article_tag_relations, dependent: :destroy

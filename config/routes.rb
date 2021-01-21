@@ -10,6 +10,7 @@ Rails.application.routes.draw do
     resource :favorites, only: [:create, :destroy]
     resources :reviews, only: [:create]
     collection do
+      get "confirm"
       get "search"
     end
   end

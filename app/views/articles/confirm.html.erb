@@ -3,7 +3,7 @@
 <div class="draft_wrapper">
   <% @articles.each do |article| %>
     <ul class="draft">
-      <li><%= article.title %></li>
+      <li class="draft_title"><%= article.title %></li>
       <li><%= link_to "更新する", edit_article_path(article), class:"update"%></li>
     </ul>
   <% end %>

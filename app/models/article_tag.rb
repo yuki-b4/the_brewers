@@ -1,6 +1,6 @@
 class ArticleTag
   include ActiveModel::Model
-  attr_accessor :title, :detail, :how_brew, :why_brew, :commit, :taste, :image, :name, :user_id
+  attr_accessor :title, :detail, :how_brew, :why_brew, :commit, :taste, :image, :name, :user_id, :status
 
   with_options presence: true do
     validates :title
@@ -26,7 +26,7 @@ class ArticleTag
     ActiveRecord::Base.transaction do
       tags = split_tag_names.map { |name| Tag.find_or_create_by!(name: name) }
       article.update(title: title, detail: detail, how_brew: how_brew, why_brew: why_brew, commit: commit, taste: taste,
-                     image: image, tags: tags, user_id: user_id)
+                     image: image, tags: tags, user_id: user_id, status: status)
     end
   rescue ActiveRecord::RecordInvalid
     false
@@ -49,7 +49,8 @@ class ArticleTag
       commit: article.commit,
       taste: article.taste,
       image: article.image,
-      name: article.tags.pluck(:name).join(',')
+      name: article.tags.pluck(:name).join(','),
+      status: article.status
     }
   end
 

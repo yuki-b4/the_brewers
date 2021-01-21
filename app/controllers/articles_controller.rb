@@ -73,6 +73,6 @@ class ArticlesController < ApplicationController
   end
 
   def set_q
-    @q = Article.ransack(params[:q])
+    @q = Article.published.ransack(params[:q])
   end
 end

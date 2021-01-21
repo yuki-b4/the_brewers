@@ -11,14 +11,14 @@
       <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
     </div>
 
-    <div class="field">
-      <p>ご職業</p>
+    <div class="check_box box">
+      <%= f.label :job_id, "ご職業" %><br />
       <%= f.collection_select(:job_id, Job.all, :id, :name, {}) %>
     </div>
 
 
     <div class="field">
-      <p> パスワード </p>
+      <%= f.label :password, "パスワード" %><br />
       <% if @minimum_password_length %>
       <em>(<%= @minimum_password_length %> characters minimum)</em>
       <% end %><br />
@@ -26,22 +26,22 @@
     </div>
 
     <div class="field">
-      <%= f.label :password_confirmation %><br />
-      <%= f.password_field :password_confirmation, autocomplete: "new-password", placeholder: "上記と同じパスワードを入力してください" %>
+      <%= f.label :password_confirmation, "確認用パスワード" %><br />
+      <%= f.password_field :password_confirmation, autocomplete: "new-password", placeholder: "もう一度入力してください" %>
     </div>
 
     <div class="field">
-      <%= f.label :nickname %><br />
+      <%= f.label :nickname, "ニックネーム" %><br />
       <%= f.text_area :nickname, maxlength: "40", placeholder: "例) コーヒーマン"%>
     </div>
 
-    <div class="field">
-      <p>1日のコーヒーの摂取量は？</p>
+    <div class="check_box box extra_margin">
+      <%= f.label :drink_coffee_id, "1日のコーヒー摂取量は？" %><br />
       <%= f.collection_select(:drink_coffee_id, DrinkCoffee.all, :id, :name, {}) %>
     </div>
 
     <div class="field">
-      <%= f.label :favorite_shop %><br />
+      <%= f.label :favorite_shop, "お気に入りのお店"%><br />
       <%= f.text_area :favorite_shop, placeholder: "例) 〇〇珈琲店, 〇〇coffee" %>
     </div>
 
@@ -49,5 +49,5 @@
       <%= f.submit "登録する" %>
     </div>
   <% end %>
+  <strong ><%= link_to "トップページにもどる", root_path, class: "btn root_link"%></strong>
 </div>
-

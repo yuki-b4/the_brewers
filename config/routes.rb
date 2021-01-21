@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   devise_for :users
   root to: 'articles#index'
-  resources :users do
+  resources :users, only: [:show] do
     collection do
       get "bookmark_list"
     end

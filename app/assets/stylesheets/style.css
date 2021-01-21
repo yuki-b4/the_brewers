@@ -156,11 +156,21 @@ a {
 
 /* devise周り */
 .devise {
-  padding: 30px 0 10px 10px;
+  padding: 30px 20px 10px;
 }
 
-.devise_form {
-  margin-left: 10px;
+.devise_title {
+  padding: 20px 10px;
+  font-style: initial;
+}
+
+.root_link {
+  margin: 40px 0 10px;
+  display: block; 
+}
+
+.root_link:hover {
+  color: #c7b198;
 }
 
 /* フォーム周り*/
@@ -168,13 +178,81 @@ a {
 .post {
   padding: 30px 0 10px 10px;
 }
+ 
 .field{
-  margin: 10px 0;
-  padding: 5px; 
+  margin: 30px 0;
+  width: 30vw;
+  height: 7vh;
 }
 
 .actions{
-  margin-bottom: 40px;
+  margin-top: 60px;
+}
+
+input, textarea {
+  font: 15px/24px sans-serif;
+	box-sizing: border-box;
+	width: 100%;
+	padding: 0.3em;
+	transition: 0.3s;
+	letter-spacing: 1px;
+	color: #aaaaaa;
+	border: 1px solid #1b2538;
+	border-radius: 4px;
+}
+
+input, textarea {
+  border: 1px solid #dfd3c3;
+	outline: none;
+  box-shadow: 0 0 5px 1px rgba218,60,65;
+}
+
+.check_box {
+  overflow: hidden;
+	width: 90%;
+}
+
+.check_box select {
+  width: 20%;
+	padding-right: 1em;
+	cursor: pointer;
+	text-indent: 0.01px;
+	text-overflow: ellipsis;
+  border: solid 1px #dfd3c3;
+	background: transparent;
+	background-image: none;
+	box-shadow: none;
+	-webkit-appearance: none;
+	appearance: none;
+} 
+
+.check_box select::-ms-expand {
+  display: none;
+}
+
+.check_box .box {
+  position: relative;
+	border: 1px solid #dfd3c3;
+	border-radius: 2px;
+	background: #dfd3c3;
+}
+
+.check_box .box::before {
+	position: absolute;
+	top: 0.8em;
+	right: 0.9em;
+	width: 0;
+	height: 0;
+	padding: 0;
+	content: '';
+	border-left: 6px solid transparent;
+	border-right: 6px solid transparent;
+	border-top: 6px solid #dfd3c3;
+	pointer-events: none;
+}
+
+.extra_margin {
+  margin-top:  50px;
 }
 
 .form__btn{
@@ -184,8 +262,8 @@ a {
   color: #fff;
   text-decoration: none;
   user-select: none;
-  background: #87CEFA;
-  border: 1px #87CEFA solid;
+  background: #dfd3c3;
+  border: 1px #dfd3c3 solid;
   border-radius: 3px;
   box-shadow: 0 3px 3px 0 rgba(0, 0, 0, 0.14), 0 1px 2px 0 rgba(0, 0, 0, 0.12);
   transition: 0.2s ease;
@@ -309,16 +387,61 @@ a {
   margin: 30px 40px 20px;
 }
 
-
 .delete_fav, .save_fav {
   border: 1px solid #181818;
   margin: 30px 0 10px 0;
 }
 
 
+/* ユーザー詳細 */
+.users {
+  padding: 10px 20px 10px;
+}
 
+.user {
+  margin: 10px 0 20px;
+}
+
+.user_name {
+  text-shadow:1px 0 0 #fff,0 1px 0 #fff,-1px 0 0 #fff,0 -1px 0 #fff,3px 3px 0 #fff;
+  color: #c7b198;
+}
+
+.user_info {
+  border-collapse: collapse;
+  margin-bottom: 32px;
+  width: 50%;
+}
+
+.info_box {
+  text-align: left;
+  font-weight: bold;
+  background: #c7b198;
+  border-collapse: collapse;  
+  width: 30%;
+  padding: 6px;
+  margin-top: 10px;
+}
+.user_detail {
+  text-align: left;
+  border-collapse: collapse;
+  background-color: #dfd3c3;
+  width: 70%;
+  padding: 8px 4px;
+} 
+
+.edit__button {
+  height: 7vh;
+  padding: 20px 15px;
+  font-size: 12px;
+  background-color: #dfd3c3;
+  margin-right: 20px;
+  box-sizing: border-box;
+}
 
 /* フッター */
-footer {
+.global_footer {
+  margin: 50px 0 10px;
   text-align: center;
 }
+

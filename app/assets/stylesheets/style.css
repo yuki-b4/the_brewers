@@ -143,9 +143,9 @@ a {
   width: 33.3%;
 }
 
-.mylist, .new_post {
+.mylist, .new_post, .draft_post{
   font-size: 15px;
-  padding: 15px 20px;
+  padding: 12px 11px;
   border: #c7b198, 1px, solid;
   background-color: #c7b198;
 }
@@ -392,6 +392,27 @@ input, textarea {
   margin: 30px 0 10px 0;
 }
 
+/* 下書きページ */
+
+.draft_wrapper {
+  padding: 30px 20px 10px;
+  
+}
+.draft {
+  width: 85vw;
+  color: black;
+  border-left: solid 8px  #c7b198 ;/*左側の線*/
+  background: #dfd3c3;/*背景色*/
+  margin-bottom: 5px;/*下のバーとの余白*/
+  line-height: 1.5;
+  border-radius: 0 15px 15px 0;/*右側の角だけ丸く*/
+  padding: 0.5em;
+  list-style-type: none!important;
+}
+
+.update:hover {
+  opacity: 0.5;
+}
 
 /* ユーザー詳細 */
 .users {

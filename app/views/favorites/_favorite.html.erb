@@ -5,4 +5,4 @@
     <p><%= link_to "マネしたい！", article_favorites_path(article.id), method: :post, remote: true, class: :save_fav%></p>
   <% end %>
 <% end %>
-<p><span>今</span><%= link_to article.favorites.count%><span>人の人がマネしたいと言っています！</span></p>
+<p class="count_favorite"><%= article.favorites.count%><span>Fav</span></p>

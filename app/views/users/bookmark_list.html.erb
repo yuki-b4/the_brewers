@@ -9,7 +9,7 @@
   <% @favorite_articles.each do |article|%>
     <div class="card">
         <% if article.image.attached? %>   
-          <%= link_to image_tag(article.image, class: :card__img ), article_path(article), method: :get %>   <%# 投稿詳細ページに %>
+          <%= link_to image_tag(article.image.variant(resize: "400x400"), class: :card__img ), article_path(article), method: :get %>   <%# 投稿詳細ページに %>
         <% end %>
         <div class="card__body">
           <%= link_to article.title, article_path(article), class: :card__title%>         <%# 投稿詳細ページに %>

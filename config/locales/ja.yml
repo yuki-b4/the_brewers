@@ -3,4 +3,76 @@ ja:
     articles:
       status: 
         draft: '下書き'
-        published: '公開中'
+        published: '公開'
+  activerecord:
+    errors:
+      models:
+        user:
+          attributes:
+            email: 
+              blank: "が入力されていません"
+              taken: "は、既に登録されています"
+              invalid: "には@を含めてください"
+            password: 
+              blank: "が入力されていません"
+              too_short: "が短すぎます。6文字以上で入力してください"
+            password_confirmation:
+              confirmation: "が、パスワードと一致していないか、6文字以上ではありません"
+            nickname:
+              blank: "が入力されていません"
+    attributes:
+      user: 
+        nickname: "ニックネーム"
+        email: "メールアドレス"
+        password: "パスワード"
+        password_confirmation: "確認用パスワード"
+        job_id: "ご職業"
+        drink_coffee_id: "1日のコーヒー摂取量"
+        favorite_shop: "お気に入りのお店"
+  devise:
+    registrations:
+      user:
+        signed_up: "新規登録が完了しました！"
+    sessions:
+      user: 
+        signed_in: "ログインに成功しました！"
+        signed_out: "ログアウトしました"
+    failure:
+      user:
+        invalid: "メールアドレスかパスワードが、正しくありません"
+        not_found_in_database: "入力されたメールアドレスは登録されていません"
+        unauthenticated: "ログインしてください"
+
+  activemodel:
+    errors:
+      models:
+        article_tag:
+          attributes:
+            title:
+              blank: "が入力されていません"
+            detail: 
+              blank: "が入力されていません"
+            how_brew: 
+              blank: "が入力されていません"
+            why_brew: 
+              blank: "が入力されていません"
+            taste: 
+              blank: "が入力されていません"
+            name: 
+              blank: "が入力されていません"
+            user_id:
+              blank: "ログインしてください"
+    attributes:
+      article_tag:
+        title: "タイトル"
+        detail: "コーヒーのこと"
+        how_brew: "淹れ方の詳細"
+        why_brew: "なぜそうしたのか（参考にした記事など）"
+        taste: "お味"
+        name: "タグ"
+        user_id: ユーザーid
+
+    
+
+      
+        

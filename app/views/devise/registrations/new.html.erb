@@ -7,18 +7,18 @@
     <%= render "devise/shared/error_messages", model: @user %> 
 
     <div class="field">
-      <%= f.label :email %><br />
+      <%= f.label :email%><br />
       <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
     </div>
 
     <div class="check_box box">
-      <%= f.label :job_id, "ご職業" %><br />
+      <%= f.label :job_id%><br />
       <%= f.collection_select(:job_id, Job.all, :id, :name, {}) %>
     </div>
 
 
     <div class="field">
-      <%= f.label :password, "パスワード" %><br />
+      <%= f.label :password%><br />
       <% if @minimum_password_length %>
       <em>(<%= @minimum_password_length %> characters minimum)</em>
       <% end %><br />
@@ -26,17 +26,17 @@
     </div>
 
     <div class="field">
-      <%= f.label :password_confirmation, "確認用パスワード" %><br />
+      <%= f.label :password_confirmation%><br />
       <%= f.password_field :password_confirmation, autocomplete: "new-password", placeholder: "もう一度入力してください" %>
     </div>
 
     <div class="field">
-      <%= f.label :nickname, "ニックネーム" %><br />
+      <%= f.label :nickname%><br />
       <%= f.text_area :nickname, maxlength: "40", placeholder: "例) コーヒーマン"%>
     </div>
 
     <div class="check_box box extra_margin">
-      <%= f.label :drink_coffee_id, "1日のコーヒー摂取量は？" %><br />
+      <%= f.label :drink_coffee_id %><br />
       <%= f.collection_select(:drink_coffee_id, DrinkCoffee.all, :id, :name, {}) %>
     </div>
 

@@ -14,12 +14,12 @@ RSpec.describe '新規登録', type: :system do
       # 新規登録ページに遷移する
       visit new_user_registration_path
       # 必要な事項を入力する
-      fill_in 'Email', with: @user.email
+      fill_in 'メールアドレス', with: @user.email
       select 'コーヒー大好きだけど、これから業界で働く予定', from: 'ご職業'
       fill_in 'パスワード', with: @user.password
       fill_in '確認用パスワード', with: @user.password_confirmation
       fill_in 'ニックネーム', with: @user.nickname
-      select '1杯', from: '1日のコーヒー摂取量は？'
+      select '1杯', from: '1日のコーヒー摂取量'
       # 登録ボタンを押すと、モデルのカウントが１上がる
       expect { find('input[name="commit"]').click }.to change { User.count }.by(1)
       # 登録が完了すると、トップページに遷移する
@@ -27,8 +27,8 @@ RSpec.describe '新規登録', type: :system do
       # ページにログアウトボタンと、「ようこそ、ユーザー名さん」ボタンがある
       expect(page).to have_content('ログアウト')
       expect(page).to have_content("ようこそ、#{@user.nickname}さん")
-      # ページに、新規登録、ログインボタンがないことを確認する
-      expect(page).to have_no_content('新規登録')
+      # ページに、新規登録が完了しました！と表示され、ログインボタンがないことを確認する
+      expect(page).to have_content('新規登録が完了しました！')
       expect(page).to have_no_content('ログイン')
     end
   end
@@ -42,12 +42,12 @@ RSpec.describe '新規登録', type: :system do
       # 新規登録ページに遷移する
       visit new_user_registration_path
       # 必要な事項を入力する
-      fill_in 'Email', with: ''
+      fill_in 'メールアドレス', with: ''
       select '--', from: 'ご職業'
       fill_in 'パスワード', with: ''
       fill_in '確認用パスワード', with: ''
       fill_in 'ニックネーム', with: ''
-      select '--', from: '1日のコーヒー摂取量は？'
+      select '--', from: '1日のコーヒー摂取量'
       # 登録ボタンを押すと、モデルのカウントは上がらない
       expect { find('input[name="commit"]').click }.to change { User.count }.by(0)
       # 登録に失敗し、新規登録画面に遷移する
@@ -70,8 +70,8 @@ RSpec.describe 'ログイン', type: :system do
       # ログインページに遷移する
       visit new_user_session_path
       # 必要事項を入力する
-      fill_in 'Email', with: @user.email
-      fill_in 'Password', with: @user.password
+      fill_in 'メールアドレス', with: @user.email
+      fill_in 'パスワード', with: @user.password
       # ログインボタンを押す
       find('input[name="commit"]').click
       # ログインに成功するとトップページに遷移する
@@ -79,9 +79,9 @@ RSpec.describe 'ログイン', type: :system do
       # ページにログアウトボタンとユーザー名が入った「ようこそ、ユーザー名さん」ボタンがある
       expect(page).to have_content('ログアウト')
       expect(page).to have_content("ようこそ、#{@user.nickname}さん")
-      # ページに、新規登録、ログインボタンがないことを確認する
+      # ページに、新規登録がなく、ログインに成功しました！と表示されていることを確認する
       expect(page).to have_no_content('新規登録')
-      expect(page).to have_no_content('ログイン')
+      expect(page).to have_content('ログインに成功しました！')
     end
   end
   context 'ログインできない場合' do
@@ -93,8 +93,8 @@ RSpec.describe 'ログイン', type: :system do
       # ログインページに遷移する
       visit new_user_session_path
       # 必要事項を入力する
-      fill_in 'Email', with: ''
-      fill_in 'Password', with: ''
+      fill_in 'メールアドレス', with: ''
+      fill_in 'パスワード', with: ''
       # ログインボタンを押す
       find('input[name="commit"]').click
       # ログインに失敗し、ログインページに遷移する

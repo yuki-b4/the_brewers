@@ -6,14 +6,13 @@
   <%# ここから記事情報 %>
   <div class="article_info">
     <div class="upper_head">
-      <div class="upper_head_left">
+      <div class="upper_head_left ">
         <p class="title">
           <%= @article.title%>
         </p>
         <p class="nickname">
-          by
+          by<%= link_to @article.user.nickname, "#", class: :nickname_ho%>
         </p>
-        <%= link_to @article.user.nickname, "#", class: :nickname_ho%>
       </div>
       <% if user_signed_in? && current_user.id == @article.user.id%>
         <div class="upper_head_right">
@@ -24,47 +23,44 @@
     </div>
     <% if @article.image.attached?%>
       <div class="middle_head">
-        <%= image_tag(@article.image, class: :image)%>
+        <%= image_tag @article.image.variant(resize: "400x400"), class: :image%>
       </div>
     <% end %>
     <div class="lower_head">
       <p class="details">
-        ○コーヒーの詳細
+        コーヒーの詳細
       </p>
       <%= @article.detail%>
     </div>
     <div class="upper_body">
-      <p class="reciepe">○レシピの詳細</p>
-      <div class="reciepe_box">
-        <div class="how_brew">
-          <p class="details">
-            どうやって作ったか
-          </p>
-          <%= @article.how_brew%>
-        </div>
-        <div class="why_brew">
-          <p class="details">
-            なぜそうしたか
-          </p>
-          <%= @article.why_brew%>
-        </div>
+      <div class="how_brew">
+        <p class="details">
+          どうやって作ったか
+        </p>
+        <%= @article.how_brew%>
+      </div>
+      <div class="why_brew">
+        <p class="details">
+          なぜそうしたか
+        </p>
+        <%= @article.why_brew%>
       </div>
     </div>
     <div class="middle_body">
       <p class="details">
-          ○お味は？
+          お味は？
       </p>
       <%= @article.taste%>
     </div>
     <div class="lower_body">
        <p class="details">
-          ○こだわりポイント
+          こだわりポイント
       </p>
       <%= @article.commit%>
     </div>
     <div class="lower__body">
        <p class="details">
-          ○タグ
+          タグ
       </p>
       <% @article.tags.each do |tag|%>
         <%= tag.name%>
@@ -82,17 +78,18 @@
     <p class="details">レビュー欄</p>
     <% if user_signed_in?%>
       <%= form_with model: [@article, @review], class: :comment_input do |f|%>
-        <%= f.label :review, "Brewレポ"%>
         <%= f.text_field :review, class: :input_form%>
         <%= f.submit "レビューを投稿する"%>
       <% end %>
+    <% else %>
+      <p>ログインすると、この投稿にレビューすることができるようになります！</p>
     <% end %>
     <div class="comment_index">
       <% @reviews.each do |review|%>
-        <p>
-          <%= link_to review.user.nickname, "#"%><br />
+        <div class="comment">
+          <%= link_to review.user.nickname, "#", class: :comment_by%><br />
           <%= review.review %>
-        </p>
+        </div>
       <% end %>
     </div>
   </div>

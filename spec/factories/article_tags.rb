@@ -7,6 +7,6 @@ FactoryBot.define do
     commit { Faker::Lorem.sentence }
     taste { Faker::Lorem.sentence }
     name { Faker::Lorem.word }
-    user_id { 3 }
+    user_id { Faker::Number.within(range: 1..10) } 
   end
 end

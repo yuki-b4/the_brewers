@@ -30,40 +30,40 @@
       <p class="details">
         コーヒーの詳細
       </p>
-      <%= @article.detail%>
+      <%= safe_join(@article.detail.split("\n"), tag(:br))%>
     </div>
     <div class="upper_body">
       <div class="how_brew">
         <p class="details">
           どうやって作ったか
         </p>
-        <%= @article.how_brew%>
+        <%= safe_join(@article.how_brew.split("\n"), tag(:br))%>
       </div>
       <div class="why_brew">
         <p class="details">
           なぜそうしたか
         </p>
-        <%= @article.why_brew%>
+        <%= text_url_to_link(h(safe_join(@article.why_brew.split("\n"), tag(:br)))).html_safe%>
       </div>
     </div>
     <div class="middle_body">
       <p class="details">
           お味は？
       </p>
-      <%= @article.taste%>
+      <%= safe_join(@article.taste.split("\n"), tag(:br))%>
     </div>
     <div class="lower_body">
        <p class="details">
           こだわりポイント
       </p>
-      <%= @article.commit%>
+      <%= safe_join(@article.commit.split("\n"), tag(:br))%>
     </div>
     <div class="lower__body">
        <p class="details">
           タグ
       </p>
       <% @article.tags.each do |tag|%>
-        <%= tag.name%>
+        <%= safe_join(tag.name.split("\n"), tag(:br))%>
       <% end %>
     </div>
     <div class="foot">
@@ -88,7 +88,7 @@
       <% @reviews.each do |review|%>
         <div class="comment">
           <%= link_to review.user.nickname, "#", class: :comment_by%><br />
-          <%= review.review %>
+          <%= safe_join(review.review.split("\n"), tag(:br)) %>
         </div>
       <% end %>
     </div>

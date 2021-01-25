@@ -42,7 +42,6 @@ ja:
         invalid: "メールアドレスかパスワードが、正しくありません"
         not_found_in_database: "入力されたメールアドレスは登録されていません"
         unauthenticated: "ログインしてください"
-
   activemodel:
     errors:
       models:

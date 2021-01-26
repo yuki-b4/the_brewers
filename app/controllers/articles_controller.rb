@@ -14,7 +14,7 @@ class ArticlesController < ApplicationController
 
   def create
     @form = ArticleTag.new(article_params)
-    (@form.save) ? (redirect_to @form, notice: '投稿が完了しました！') : (render :new)
+    @form.save ? (redirect_to @form, notice: '投稿が完了しました！') : (render :new)
   end
 
   def edit

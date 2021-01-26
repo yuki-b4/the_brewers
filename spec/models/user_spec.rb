@@ -16,13 +16,13 @@ RSpec.describe User, type: :model do
       it 'nicknameが空だと登録できない' do
         @user.nickname = nil
         @user.valid?
-        expect(@user.errors.full_messages).to include("ニックネーム が入力されていません")
+        expect(@user.errors.full_messages).to include('ニックネーム が入力されていません')
       end
 
       it 'emailが空だと登録できない' do
         @user.email = nil
         @user.valid?
-        expect(@user.errors.full_messages).to include("メールアドレス が入力されていません")
+        expect(@user.errors.full_messages).to include('メールアドレス が入力されていません')
       end
 
       it 'emailに@がないと登録できない' do
@@ -35,20 +35,21 @@ RSpec.describe User, type: :model do
         @user.save
         another_user = FactoryBot.build(:user, email: @user.email)
         another_user.valid?
-        expect(another_user.errors.full_messages).to include("メールアドレス は、既に登録されています")
+        expect(another_user.errors.full_messages).to include('メールアドレス は、既に登録されています')
       end
 
       it 'passwordが空だと登録できない' do
         @user.password = nil
         @user.valid?
-        expect(@user.errors.full_messages).to include('パスワード が入力されていません', 'パスワード には英字と数字の両方を含めてください', '確認用パスワード が、パスワードと一致していないか、6文字以上ではありません')
+        expect(@user.errors.full_messages).to include('パスワード が入力されていません', 'パスワード には英字と数字の両方を含めてください',
+                                                      '確認用パスワード が、パスワードと一致していないか、6文字以上ではありません')
       end
 
       it 'passwordが5文字以下だと登録できない' do
         @user.password = 'aaa12'
         @user.password_confirmation = 'aaa12'
         @user.valid?
-        expect(@user.errors.full_messages).to include("パスワード が短すぎます。6文字以上で入力してください")
+        expect(@user.errors.full_messages).to include('パスワード が短すぎます。6文字以上で入力してください')
       end
 
       it 'passwordに半角数字が最低1文字入力されていないと登録できない' do

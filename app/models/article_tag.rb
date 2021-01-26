@@ -26,7 +26,7 @@ class ArticleTag
     ActiveRecord::Base.transaction do
       tags = split_tag_names.map { |name| Tag.find_or_create_by!(name: name) }
       article.update!(title: title, detail: detail, how_brew: how_brew, why_brew: why_brew, commit: commit, taste: taste,
-                     image: image, tags: tags, user_id: user_id, status: status)
+                      image: image, tags: tags, user_id: user_id, status: status)
     end
   rescue ActiveRecord::RecordInvalid
     false

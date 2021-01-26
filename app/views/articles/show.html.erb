@@ -11,7 +11,7 @@
           <%= @article.title%>
         </p>
         <p class="nickname">
-          by<%= link_to @article.user.nickname, "#", class: :nickname_ho%>
+          by<%= link_to @article.user.nickname, user_path(@article.user.id), class: :nickname_ho%>
         </p>
       </div>
       <% if user_signed_in? && current_user.id == @article.user.id%>
@@ -87,7 +87,7 @@
     <div class="comment_index">
       <% @reviews.each do |review|%>
         <div class="comment">
-          <%= link_to review.user.nickname, "#", class: :comment_by%><br />
+          <%= link_to review.user.nickname, user_path(review.user.id), class: :comment_by%><br />
           <%= safe_join(review.review.split("\n"), tag(:br)) %>
         </div>
       <% end %>

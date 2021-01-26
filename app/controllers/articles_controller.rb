@@ -14,8 +14,7 @@ class ArticlesController < ApplicationController
 
   def create
     @form = ArticleTag.new(article_params)
-    if @form.valid?
-      @form.save
+    if @form.save
       redirect_to @form, notice: '投稿が完了しました！'
     else
       render :new
@@ -28,8 +27,7 @@ class ArticlesController < ApplicationController
 
   def update
     @form = ArticleTag.new(article_params, article: @article)
-    if @form.valid?
-      @form.save
+    if @form.save
       if @article.published?
         redirect_to article_path(@article), notice: '投稿の更新が完了しました！'
       else

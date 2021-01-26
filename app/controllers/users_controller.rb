@@ -3,7 +3,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @user_articles = @user.articles
+    @user_articles = @user.articles.published.order(created_at: :desc)
   end
 
   def bookmark_list

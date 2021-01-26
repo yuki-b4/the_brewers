@@ -81,6 +81,7 @@ rails db:migrate
 | favorite_shop      | string  |                           |
 
 - has_many favorites
+- has_many :favorite_articles, through: :favorites, source: :article
 - has_many reviews
 - has_many articles
 
@@ -94,6 +95,7 @@ rails db:migrate
 | commit   | string     |                   |
 | taste    | string     | null: false       |
 | user_id  | references | foreign_key: true |
+| status   | integer    | null: false       |
 
 - has_many favorites
 - has_many reviews

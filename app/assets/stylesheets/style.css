@@ -320,6 +320,7 @@ select {
   margin-bottom: 16px;
 }
 .card__title {
+  max-width: 40%;
   display: block;
   font-size: 20px;
   margin-bottom: 8px;
@@ -327,6 +328,9 @@ select {
 }
 .card__summary {
   font-size: 16px;
+}
+.card__body {
+  width: auto;
 }
 .card__user {
   display: block;
@@ -354,6 +358,7 @@ select {
 }
 
 .upper_head_left {
+  max-width: 44%;
   display: flex;
   margin: 10px;
   padding-top: 20px;
@@ -361,6 +366,7 @@ select {
 }
 
 .title {
+  
   font-size: 23px;
   font-style: bold;
 }

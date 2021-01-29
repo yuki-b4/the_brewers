@@ -4,6 +4,11 @@
 <div class="users">
   <div class="user">
     <h2 class="user_name"><%= "#{@user.nickname}のページ" %></h2>
+     <%if @user.id == current_user.id%>
+      <div class="edit_box">
+        <%= link_to "編集する", " :id/edit", class: :edit_button%>
+      </div>
+    <% end %>
   </div>
   <div class="user_info">
     <p class="info_box">職業<br /></p>

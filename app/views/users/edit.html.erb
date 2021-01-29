@@ -1,0 +1,39 @@
+<%= render "devise/shared/global_header"%>
+<div class="devise">
+  <h2 class="devise_title">ユーザー情報の更新</h2>
+
+  <%= form_with model: current_user, class: :devise_form, local: true do |f| %>
+
+    <%= render "devise/shared/error_messages", model: current_user %> 
+
+    <div class="field">
+      <%= f.label :email%><br />
+      <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+    </div>
+
+    <div class="check_box box">
+      <%= f.label :job_id%><br />
+      <%= f.collection_select(:job_id, Job.all, :id, :name, {}) %>
+    </div>
+
+    <div class="field">
+      <%= f.label :nickname%><br />
+      <%= f.text_area :nickname, maxlength: "40", placeholder: "例) コーヒーマン"%>
+    </div>
+
+    <div class="check_box box extra_margin">
+      <%= f.label :drink_coffee_id %><br />
+      <%= f.collection_select(:drink_coffee_id, DrinkCoffee.all, :id, :name, {}) %>
+    </div>
+
+    <div class="field">
+      <%= f.label :favorite_shop, "お気に入りのお店"%><br />
+      <%= f.text_area :favorite_shop, placeholder: "例) 〇〇珈琲店, 〇〇coffee" %>
+    </div>
+
+    <div class="actions">
+      <%= f.submit "登録する" %>
+    </div>
+  <% end %>
+  <strong ><%= link_to "トップページにもどる", root_path, class: "btn root_link"%></strong>
+</div>

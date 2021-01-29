@@ -523,16 +523,20 @@ select {
 /* ユーザー詳細 */
 .users {
   padding: 10px 20px 10px;
+
 }
 
 .user {
   margin: 10px 0 20px;
+  display: flex;
+  justify-content: space-between;
 }
 
 .user_name {
   text-shadow:1px 0 0 #fff,0 1px 0 #fff,-1px 0 0 #fff,0 -1px 0 #fff,3px 3px 0 #fff;
   color: #c7b198;
 }
+
 
 .user_info {
   border-collapse: collapse;
@@ -562,7 +566,6 @@ select {
   padding: 20px 15px;
   font-size: 12px;
   background-color: #dfd3c3;
-  margin-right: 20px;
   box-sizing: border-box;
 }
 

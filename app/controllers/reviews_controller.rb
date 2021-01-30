@@ -1,7 +1,7 @@
 class ReviewsController < ApplicationController
   def create
     @article = Article.find(params[:article_id])
-    review = Review.create(review_params)
+    Review.create(review_params)
     redirect_to article_path(@article)
   end
 

@@ -6,21 +6,6 @@
   <% if @favorite_articles.blank? %>
     <p>マネしたいリストに投稿してみよう！</p>
   <% else %>
-  <% @favorite_articles.each do |article|%>
-    <div class="card">
-        <% if article.image.attached? %>   
-          <%= link_to image_tag(article.image.variant(resize: "400x400"), class: :card__img ), article_path(article), method: :get %>   
-        <% end %>
-        <div class="card__body">
-          <%= link_to article.title, article_path(article), class: :card__title%>         
-          <% article.tags.each do |tag|%>
-            <p class="card__summary">
-              <%= tag.name %>
-            </p>
-          <% end %>
-          <%= link_to "by #{article.user.nickname}", user_path(article.user.id), class: :card__user %>    
-        </div>
-    </div>
-  <% end %>
+    <%= render partial: "articles/article", collection: @favorite_articles %>
   <% end %>
 </div>

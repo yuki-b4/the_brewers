@@ -23,7 +23,7 @@ RSpec.describe '記事投稿機能', type: :system do
       fill_in 'なぜそうしたのか（参考にした記事など）（必須）', with: @article.why_brew
       fill_in 'こだわりポイント', with: @article.commit
       fill_in 'お味はいかがでしたか？（必須）', with: @article.taste
-      fill_in 'タグ', with: @article.name
+      fill_in 'タグ (必須)', with: @article.name
       select '公開', from: 'article[status]'
       # 投稿するボタンを押すと、artcileのカウントが1上昇する
       expect { find('input[name="commit"]').click }.to change { Article.count }.by(1)
@@ -65,45 +65,3 @@ RSpec.describe '記事投稿機能', type: :system do
   end
 end
 
-# RSpec.describe "記事編集機能", type: :system do
-#   before do
-#     #一人目のユーザーと投稿を作成
-#     @user1 = FactoryBot.create(:user)
-#     @article1 = FactoryBot.build(:article_tag, user_id: @user1.id, status: 1)
-#     @article1.image = fixture_file_upload('/files/test_image.png')
-#     @article1.save
-#     #別のユーザーと投稿を作成
-#     @user2 = FactoryBot.create(:user)
-#     @article2 = FactoryBot.build(:article_tag, user_id: @user2.id, status: 1)
-#     @article2.image = fixture_file_upload('/files/test_image.png')
-#     @article2.save
-#   end
-
-#   context "記事情報を編集し、更新できる時" do
-#     it "ログインしているユーザーは、自分の投稿を編集・更新できる" do
-#       #ログインする
-#       sign_in(@user1)
-#       #投稿の詳細ページに遷移する
-#       click_on "#{@article1.title}"
-#       #投稿した記事に遷移する
-#       expect(page).to have_content("#{@article1.title}")
-#       expect(page).to have_content("by#{@user1.nickname}")
-#       #詳細ページに、編集ボタンがあるのを確認する
-#       expect(page).to have_content("編集")
-#       #編集ページに遷移する
-#       visit edit_article_path(@article1)
-#       #画像以外の保存された情報が入力されていることを確認する
-#       expect(find("#article_title").value).to eq @article1.title
-#       #記事情報を編集
-#       # fill_in "タイトル", with: "コーヒーの作りかた"
-#       # image_path = Rails.root.join("spec/fixtures/files/test_image.png")
-#       # attach_file("article[image]", image_path, make_visible: true)
-#       # fill_in "コーヒーの詳細（必須）", with: "編集します"
-#       # fill_in "淹れ方の詳細(必須）", with: "これが編集した後の結果です"
-#       # fill_in "なぜそうしたのか（参考にした記事など）（必須）", with: @article.why_brew
-#       # fill_in "こだわりポイント", with: @article.commit
-#       # fill_in "お味はいかがでしたか？（必須）", with: @article.taste
-#       # fill_in "タグ", with: @article.name
-#     end
-#   end
-# end

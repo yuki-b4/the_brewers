@@ -82,7 +82,7 @@
         <%= f.submit "レビューを投稿する"%>
       <% end %>
     <% else %>
-      <p>ログインすると、この投稿にレビューすることができるようになります！</p>
+      <p><%= link_to "ログインする", new_user_session_path, class: :log_in%>とレビューを投稿できるようになります！</p>
     <% end %>
     <div class="comment_index">
       <% @reviews.each do |review|%>

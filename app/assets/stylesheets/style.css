@@ -421,6 +421,13 @@ select {
 }
 
 /* コメント欄 */
+.log_in {
+  font-weight: bold;
+  color: #c7b198;
+}
+.log_in:hover {
+  border-bottom: 1px solid #795629;
+}
 
 .comment_info {
   width: 50%

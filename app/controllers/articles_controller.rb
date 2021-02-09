@@ -7,6 +7,7 @@ class ArticlesController < ApplicationController
 
   def index
     @articles = Article.published.order(created_at: :desc).includes(:user)
+    @rank_articles = Article.find(Favorite.group(:article_id).order("count(article_id) desc").limit(5).pluck(:article_id))
   end
 
   def new

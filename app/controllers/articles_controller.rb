@@ -7,7 +7,7 @@ class ArticlesController < ApplicationController
 
   def index
     @articles = Article.published.order(created_at: :desc).includes(:user)
-    @rank_articles = Article.find(Favorite.group(:article_id).order("count(article_id) desc").limit(5).pluck(:article_id))
+    @rank_articles = Article.create_article_ranking
   end
 
   def new
@@ -65,9 +65,7 @@ class ArticlesController < ApplicationController
   end
 
   def draft_prohibited
-    unless @article.published?
-      redirect_to root_path
-    end
+    redirect_to root_path unless @article.published?
   end
 
   def move_to_index

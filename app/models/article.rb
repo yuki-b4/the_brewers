@@ -11,4 +11,8 @@ class Article < ApplicationRecord
   def liked_by?(user)
     favorites.where(user_id: user.id).exists?
   end
+
+  def self.create_article_ranking
+    Article.find(Favorite.group(:article_id).order('count(article_id) desc').limit(5).pluck(:article_id))
+  end
 end

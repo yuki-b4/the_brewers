@@ -358,13 +358,13 @@ select {
   border: 1px solid #181818;
 }
 
-.title {
+.rank_title {
   padding: 10px 25px;
   width: auto;
   border-bottom: #181818 1px solid;
 }
 
-.title:hover{
+.rank_title:hover{
   opacity: 0.3;
 }
 

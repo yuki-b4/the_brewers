@@ -9,7 +9,7 @@
     <h2>真似したいランキング</h2>
     <div class="rank_box">  
       <% @rank_articles.each.with_index(1) do |article, i|%>
-        <div class="title">
+        <div class="rank_title">
           <%= i %>位 <%= link_to article.title, article_path(article), class: "title_name"%>
         </div>
       <% end %>

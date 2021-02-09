@@ -308,6 +308,11 @@ select {
 
 /*  記事一覧 */
 
+.index_body {
+  display: flex;
+  justify-content: space-around;
+}
+
 .card {
   max-width: 70vw;
   max-height: 80vh;
@@ -339,6 +344,30 @@ select {
   text-align: center;
   text-decoration: underline;
 }
+
+/* ランキング */
+.rank {
+  width: 25%;
+  height: 40%;
+}
+
+.rank_box {
+  margin-top: 10px;
+  height: auto;
+  width: auto;
+  border: 1px solid #181818;
+}
+
+.title {
+  padding: 10px 25px;
+  width: auto;
+  border-bottom: #181818 1px solid;
+}
+
+.title:hover{
+  opacity: 0.3;
+}
+
 
 /* 記事詳細 */
 .article {
@@ -419,6 +448,8 @@ select {
 .reciepe {
   font-size: 19px;
 }
+
+
 
 /* コメント欄 */
 .log_in {

@@ -64,4 +64,3 @@ RSpec.describe '記事投稿機能', type: :system do
     end
   end
 end
-

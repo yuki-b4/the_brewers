@@ -1,8 +1,19 @@
 <%= render "devise/shared/global_header"%>
 <%= render "devise/shared/second_header"%>
 <%= render "devise/shared/done_flash_message"%>
-
-<div class="card__wrapper">
-  <%= render partial: "article", collection: @articles %>
+<div class="index_body">
+  <div class="card__wrapper">
+    <%= render partial: "article", collection: @articles %>
+  </div>
+  <div class="rank">
+    <h2>真似したいランキング</h2>
+    <div class="rank_box">  
+      <% @rank_articles.each.with_index(1) do |article, i|%>
+        <div class="rank_title">
+          <%= i %>位 <%= link_to article.title, article_path(article), class: "title_name"%>
+        </div>
+      <% end %>
+    </div>
+  </div>
 </div>
 

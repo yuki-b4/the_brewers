@@ -1,11 +1,13 @@
 class ArticlesController < ApplicationController
   before_action :authenticate_user!, only: [:new, :edit, :confirm]
   before_action :set_article, only: [:edit, :update, :destroy, :show]
+  before_action :draft_prohibited, only: :show
   before_action :move_to_index, only: [:edit, :destroy]
   before_action :set_q, only: [:index, :search]
 
   def index
     @articles = Article.published.order(created_at: :desc).includes(:user)
+    @rank_articles = Article.create_article_ranking
   end
 
   def new
@@ -60,6 +62,10 @@ class ArticlesController < ApplicationController
 
   def set_article
     @article = Article.find(params[:id])
+  end
+
+  def draft_prohibited
+    redirect_to root_path unless @article.published?
   end
 
   def move_to_index

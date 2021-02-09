@@ -1,6 +1,7 @@
 class ArticlesController < ApplicationController
   before_action :authenticate_user!, only: [:new, :edit, :confirm]
   before_action :set_article, only: [:edit, :update, :destroy, :show]
+  before_action :draft_prohibited, only: :show
   before_action :move_to_index, only: [:edit, :destroy]
   before_action :set_q, only: [:index, :search]
 
@@ -60,6 +61,12 @@ class ArticlesController < ApplicationController
 
   def set_article
     @article = Article.find(params[:id])
+  end
+
+  def draft_prohibited
+    unless @article.published?
+      redirect_to root_path
+    end
   end
 
   def move_to_index

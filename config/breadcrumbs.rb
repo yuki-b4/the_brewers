@@ -4,7 +4,7 @@ end
 
 crumb :article do |article|
   link article.title, article_path(article)
-  parent :articles, article
+  parent :articles
 end
 
 crumb :edit_article do |article|

@@ -83,3 +83,5 @@ gem "aws-sdk-s3", require: false
 gem "ransack"
 
 gem "enum_help"
+
+gem "gretel"

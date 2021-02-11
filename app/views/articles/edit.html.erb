@@ -1,2 +1,4 @@
-<%= render "devise/shared/global_header"%> 
+<%= render "devise/shared/global_header"%>
+<% breadcrumb :edit_article, @article%> 
+<%= breadcrumbs separator: " &rsaquo; " %>
 <%= render "form", form: @form %> 

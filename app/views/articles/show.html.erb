@@ -1,4 +1,6 @@
 <%= render "devise/shared/global_header"%>
+<% breadcrumb :article, @article%>
+<%= breadcrumbs separator: " &rsaquo; " %>
 <%= render "devise/shared/second_half_header"%> 
 <%= render "devise/shared/done_flash_message"%>
 

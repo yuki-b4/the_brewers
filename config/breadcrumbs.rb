@@ -17,8 +17,8 @@ crumb :user do |user|
   parent :articles
 end
 
-crumb :user_edit do |user|
-  link "ユーザー編集", edit_user_path(user)
+crumb :edit_user do |user|
+  link "ユーザー編集", edit_user_path(current_user)
   parent :user, user
 end
 

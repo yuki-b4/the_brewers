@@ -83,6 +83,11 @@ a {
   opacity: 0.5;
 }
 
+/* breadcrumb */
+.breadcrumbs {
+  background-color: #f0ece2;
+}
+
 /* セカンドヘッダー */
 
 .second_header {

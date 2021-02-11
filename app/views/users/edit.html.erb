@@ -1,4 +1,7 @@
 <%= render "devise/shared/global_header"%>
+<% breadcrumb :edit_user, current_user%>
+<%= breadcrumbs separator: " &rsaquo; " %>
+
 <div class="devise">
   <h2 class="devise_title">ユーザー情報の更新</h2>
 

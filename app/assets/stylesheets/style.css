@@ -85,7 +85,8 @@ a {
 
 /* breadcrumb */
 .breadcrumbs {
-  background-color: #f0ece2;
+  margin-top: -30px;
+  font-family: sans-serif;
 }
 
 /* セカンドヘッダー */

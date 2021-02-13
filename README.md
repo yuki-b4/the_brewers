@@ -103,6 +103,10 @@ rails db:migrate
 - has_many favorite_articles, through: :favorites, source: :article
 - has_many reviews
 - has_many articles
+- has_many relationships
+- has_many followings, through: :relationships, source: :follow
+- has_many reverse_of_relationships, class_name: "Relationship", foreign_key: "follow_id"
+- has_many followers, through: :reverse_of_relationships, source: :user
 
 ## Articlesテーブル
 | Column   | Type       | Options           |
@@ -113,7 +117,7 @@ rails db:migrate
 | why_brew | text       | null: false       |
 | commit   | string     |                   |
 | taste    | string     | null: false       |
-| user_id  | references | foreign_key: true |
+| user     | references | foreign_key: true |
 | status   | integer    | null: false       |
 
 - has_many favorites
@@ -123,20 +127,20 @@ rails db:migrate
 - belongs_to user
 
 ## Favoritesテーブル
-| Column     | Type       | Options           |
-| ---------- | ---------- | ----------------- |
-| article_id | references | foreign_key: true |
-| user_id    | references | foreign_key: true |
+| Column  | Type       | Options           |
+| ------- | ---------- | ----------------- |
+| article | references | foreign_key: true |
+| user    | references | foreign_key: true |
 
 - belongs_to user
 - belongs_to article
 
 ## Reviewsテーブル
-| Column     | Type       | Options           |
-| ---------- | ---------- | ----------------- |
-| review     | string     | null: false       |
-| article_id | references | foreign_key: true |
-| user_id    | references | foreign_key: true |
+| Column  | Type       | Options           |
+| ------- | ---------- | ----------------- |
+| review  | string     | null: false       |
+| article | references | foreign_key: true |
+| user    | references | foreign_key: true |
 
 - belongs_to user
 - belongs_to article
@@ -150,10 +154,19 @@ rails db:migrate
 - has_many articles, through article_tag_relations
 
 ## Article_tag_relationsテーブル
-| Column     | Type       | Options           |
-| ---------- | ---------- | ----------------- |
-| tag_id     | references | foreign_key: true |
-| article_id | references | foreign_key: true |
+| Column  | Type       | Options           |
+| ------- | ---------- | ----------------- |
+| tag     | references | foreign_key: true |
+| article | references | foreign_key: true |
 
 - belongs_to tag
 - belongs_to article
+
+## Relationshipsテーブル
+| Column | Type       | Options                         |
+| ------ | ---------- | ------------------------------- |
+| user   | references | foreign_key: true               |
+| follow | references | foreign_key: {to_table: :users} |
+
+- belongs_to :user
+- belongs_to :follow, class_name: "User"

@@ -10,6 +10,8 @@
       <div class="edit_box">
         <%= link_to "編集する", " :id/edit", class: :edit_button%>
       </div>
+      <% else %>
+        <%= render "relationships/follow_button", user: @user %>
     <% end %>
   </div>
   <div class="user_info">
